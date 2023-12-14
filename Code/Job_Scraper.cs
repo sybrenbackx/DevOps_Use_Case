@@ -48,6 +48,8 @@ namespace ClassLibrary1
 
             try
             {
+                driver.FindElement(By.Id("sort-by-date")).Click();
+                Thread.Sleep(10000);
                 By joblist = By.CssSelector("li.search-item.clearfix");
                 ReadOnlyCollection<IWebElement> jobs = driver.FindElements(joblist);
                 Console.WriteLine("Total number of jobs for " + search_input + " is " + jobs.Count);
