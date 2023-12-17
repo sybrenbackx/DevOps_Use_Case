@@ -38,7 +38,6 @@ namespace ClassLibrary1
 
             By elem_video_link = By.CssSelector("ytd-video-renderer.style-scope.ytd-item-section-renderer");
             ReadOnlyCollection<IWebElement> videos = driver.FindElements(elem_video_link);
-            Console.WriteLine("Total number of videos in " + search_input + " are " + videos.Count);
             for (int i = 0; i < 5; i++)
             {
                 IWebElement elem_video_title = videos[i].FindElement(By.CssSelector("#video-title"));
