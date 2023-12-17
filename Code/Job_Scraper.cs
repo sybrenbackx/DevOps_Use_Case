@@ -43,7 +43,6 @@ namespace ClassLibrary1
                 Thread.Sleep(10000);
                 By joblist = By.CssSelector("li.search-item.clearfix");
                 ReadOnlyCollection<IWebElement> jobs = driver.FindElements(joblist);
-                Console.WriteLine("Total number of jobs for " + search_input + " is " + jobs.Count);
                 for (int i = 0; i < 5; i++)
                 {
                     IWebElement job_title = jobs[i].FindElement(By.CssSelector("span a h2 "));
