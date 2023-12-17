@@ -4,7 +4,6 @@ using System.Text;
 using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Support.UI;
 using System.IO;
 using Newtonsoft.Json;
 
@@ -34,9 +33,6 @@ namespace ClassLibrary1
             driver.Url = "https://www.imdb.com/find/?q=" + search_input + "&ref_=nv_sr_sm";
             driver.Manage().Window.Maximize();
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-            var timeout = 10000; /* Maximum wait time of 10 seconds */
-            var wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(timeout));
-            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
 
             Thread.Sleep(5000);
             String separator = ";";

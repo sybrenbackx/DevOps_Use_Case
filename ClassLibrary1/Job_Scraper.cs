@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Support.UI;
 using System.IO;
 using Newtonsoft.Json;
 
@@ -31,13 +27,8 @@ namespace ClassLibrary1
         {
             IWebDriver driver = new FirefoxDriver();
             driver.Url = "https://www.ictjob.be/en/search-it-jobs?keywords=" + search_input;
-            var timeout = 10000; /* Maximum wait time of 10 seconds */
-            var wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(timeout));
-            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
 
             Thread.Sleep(5000);
-
-            Int64 last_height = (Int64)(((IJavaScriptExecutor)driver).ExecuteScript("return document.documentElement.scrollHeight"));
 
             String separator = ";";
             StringBuilder outputcsv = new StringBuilder();
@@ -48,6 +39,8 @@ namespace ClassLibrary1
 
             try
             {
+                driver.FindElement(By.Id("sort-by-date")).Click();
+                Thread.Sleep(10000);
                 By joblist = By.CssSelector("li.search-item.clearfix");
                 ReadOnlyCollection<IWebElement> jobs = driver.FindElements(joblist);
                 Console.WriteLine("Total number of jobs for " + search_input + " is " + jobs.Count);
