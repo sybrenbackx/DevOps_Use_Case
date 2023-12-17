@@ -13,7 +13,7 @@ namespace use_case_devops_Sybren
             {
                 Menu start = new Menu();
 
-                int choice = start.Options();
+                int choice = start.InputCheck();
 
                 if (choice == 1)
                 {

@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -27,13 +26,8 @@ namespace ClassLibrary1
         {
             IWebDriver driver = new FirefoxDriver();
             driver.Url = "https://www.youtube.com/results?search_query=" + search_input;
-            var timeout = 10000; /* Maximum wait time of 10 seconds */
-            var wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(timeout));
-            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
 
             Thread.Sleep(5000);
-
-            Int64 last_height = (Int64)(((IJavaScriptExecutor)driver).ExecuteScript("return document.documentElement.scrollHeight"));
 
             String separator = ";";
             StringBuilder outputcsv = new StringBuilder();
